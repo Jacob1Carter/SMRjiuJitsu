@@ -6,8 +6,6 @@ API_KEY = "abc"
 
 app = Flask(__name__)
 
-Session(app)
-
 
 @app.route("/")
 def index():
@@ -15,4 +13,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run("0.0.0.0", 5022)
+    app.run(host='127.0.0.1', port=5022)
