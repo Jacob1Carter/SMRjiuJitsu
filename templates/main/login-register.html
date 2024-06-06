@@ -1,0 +1,51 @@
+<!-- main/login-register.html -->
+<!DOCTYPE html>
+<html lang="en-gb">
+
+    {% include "base/header.html" %}
+
+    <body>
+        {% include "base/navbar.html" %}
+
+        <div class="container main-content">
+
+            <form method="POST" action="/{{ page }}" id="login-register-form">
+                {% if page == "register" %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                </div>
+                {% else %}
+                <div class="form-group">
+                    <label for="username-email">Username or Email:</label>
+                    <input type="text" name="username-email" id="username-email" class="form-control" required>
+                </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    {% if page == "login" %}Login{% else %}Register{% endif %}
+                </button>
+            </form>
+
+            <a href="/{% if page == "login" %}register{% else %}login{% endif %}" class="btn btn-secondary">
+                {% if page == "login" %}Register{% else %}Login{% endif %}
+            </a>
+
+        </div>
+
+        {% include "base/footer.html" %}
+    </body>
+
+</html>
+
+<!-- /main/login-register.html -->
